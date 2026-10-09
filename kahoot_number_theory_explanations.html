@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ศูนย์การเรียนรู้ทฤษฎีจำนวน: ก่อนเรียน & หลังเรียน สอวน.คณิตศาสตร์</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #F4F7FB;
+  --surface: #FFFFFF;
+  --surface-subtle: #EEF3F8;
+  --ink: #101E33;
+  --ink-secondary: #4B5A73;
+  --line: #CFDAE6;
+  --line-light: #E2EAF2;
+  --primary: #0A7567;
+  --primary-bg: #E3F6F2;
+  --primary-dark: #065449;
+  --accent-gold: #B07800;
+  --accent-gold-bg: #FFF5D6;
+  --accent-red: #D32F2F;
+  --accent-red-bg: #FDE8E8;
+  --accent-blue: #1976D2;
+  --accent-blue-bg: #E3F2FD;
+  --accent-purple: #6B4FD8;
+  --accent-purple-bg: #F0ECFC;
+  --kahoot-red: #E21B3C;
+  --kahoot-blue: #1368CE;
+  --kahoot-yellow: #D89E00;
+  --kahoot-green: #26890C;
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 4px 18px rgba(16,30,51,0.06);
+  --shadow-hover: 0 8px 28px rgba(16,30,51,0.12);
+}
+
+[data-theme="dark"] {
+  --bg: #0C1424;
+  --surface: #142138;
+  --surface-subtle: #1C2D4A;
+  --ink: #EAF0FA;
+  --ink-secondary: #A0B2CD;
+  --line: #2B3D5E;
+  --line-light: #20314E;
+  --primary: #38D9BA;
+  --primary-bg: #0C332D;
+  --primary-dark: #2BB399;
+  --accent-gold: #F5BC38;
+  --accent-gold-bg: #3D2F0B;
+  --accent-red: #FF6659;
+  --accent-red-bg: #3E1816;
+  --accent-blue: #64B5F6;
+  --accent-blue-bg: #102A45;
+  --accent-purple: #A78BFA;
+  --accent-purple-bg: #281F4B;
+  --shadow: 0 4px 18px rgba(0,0,0,0.3);
+  --shadow-hover: 0 8px 28px rgba(0,0,0,0.5);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .heading-font, button, .chakra {
+  font-family: "Chakra Petch", "IBM Plex Sans Thai", sans-serif;
+}
+
+.app-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+/* Header Banner */
+header.hero-header {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+header.hero-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #E21B3C, #1368CE, #D89E00, #26890C);
+}
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.header-info h1 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  margin: 0 0 6px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.badge-tag {
+  font-size: 0.85rem;
+  background: var(--primary-bg);
+  color: var(--primary);
+  padding: 4px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--primary);
+  font-weight: 700;
+}
+.header-desc {
+  color: var(--ink-secondary);
+  margin: 0 0 16px;
+  max-width: 76ch;
+  font-size: 1.05rem;
+}
+.header-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn-kahoot {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  color: #fff;
+  border: none;
+}
+.btn-kahoot.pre { background: #46178F; }
+.btn-kahoot.pre:hover { background: #35106E; transform: translateY(-2px); }
+.btn-kahoot.post { background: #0A7567; }
+.btn-kahoot.post:hover { background: #07564C; transform: translateY(-2px); }
+
+.btn-ctrl {
+  background: var(--surface-subtle);
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.btn-ctrl:hover {
+  background: var(--accent-gold-bg);
+  border-color: var(--accent-gold);
+}
+
+/* Stage Indicator Bar (ก่อนเรียน -> ห้องทดลอง -> หลังเรียน -> สรุปพัฒนาการ) */
+.stage-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+  .stage-bar { grid-template-columns: repeat(2, 1fr); }
+}
+.stage-tab-btn {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
+}
+.stage-tab-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.stage-tab-btn.active {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+  box-shadow: 0 4px 16px rgba(10,117,103,0.15);
+}
+.stage-icon {
+  font-size: 1.6rem;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.stage-tab-btn.active .stage-icon {
+  background: #FFFFFF;
+}
+[data-theme="dark"] .stage-tab-btn.active .stage-icon {
+  background: var(--surface);
+}
+.stage-meta strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.stage-meta span {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+/* Secondary Action Sub-nav (โหมดครูผู้สอน / โหมดนักเรียน / ตารางย่อ) */
+.sub-nav {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.mode-switch-group {
+  display: flex;
+  background: var(--surface-subtle);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  gap: 4px;
+  border: 1px solid var(--line);
+}
+.mode-btn {
+  border: none;
+  background: transparent;
+  color: var(--ink-secondary);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.mode-btn.active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.filter-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 380px;
+}
+.filter-search-box input {
+  width: 100%;
+  padding: 7px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-subtle);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+.filter-search-box input:focus {
+  outline: 2px solid var(--primary);
+  background: var(--surface);
+}
+
+/* Score / Progress Tracker Card */
+.analytics-card {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-subtle) 100%);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .analytics-card { grid-template-columns: 1fr; }
+}
+.metric-box {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--line-light);
+}
+.metric-box h3 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+}
+.metric-box .metric-val {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.1;
+}
+.metric-box .metric-note {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  margin-top: 4px;
+}
+
+/* Cards Container */
+.cards-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.q-card {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.q-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+.q-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.q-badge-cluster {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.q-index {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: var(--surface-subtle);
+  color: var(--ink);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--line);
+}
+.badge-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-subtle);
+}
+.badge-pill.time {
+  background: var(--accent-gold-bg);
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+.q-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 16px;
+  line-height: 1.45;
+}
+
+/* Choices Layout */
+.choices-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+@media (max-width: 600px) {
+  .choices-row { grid-template-columns: 1fr; }
+}
+.c-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.05rem;
+  border: 2px solid transparent;
+  color: #FFFFFF;
+  position: relative;
+}
+.c-item.red { background: var(--kahoot-red); }
+.c-item.blue { background: var(--kahoot-blue); }
+.c-item.yellow { background: var(--kahoot-yellow); }
+.c-item.green { background: var(--kahoot-green); }
+
+.c-item.is-correct {
+  border-color: #FFFFFF;
+  box-shadow: 0 0 0 3px #10B981, inset 0 0 0 1px rgba(0,0,0,0.15);
+}
+.c-indicator {
+  margin-left: auto;
+  background: rgba(255,255,255,0.95);
+  color: #065449;
+  font-size: 0.85rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* Student quiz buttons */
+.student-choice-btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.15s, opacity 0.2s;
+}
+.student-choice-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+}
+.student-choice-btn:disabled {
+  cursor: default;
+}
+.student-choice-btn.wrong-choice {
+  filter: grayscale(0.6) brightness(0.8);
+  border: 3px solid #EF4444;
+}
+
+/* Info Boxes */
+.box-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+@media (max-width: 768px) {
+  .box-duo { grid-template-columns: 1fr; }
+}
+.box-info {
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  border: 1.5px solid transparent;
+}
+.box-info h4 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.box-info.proof {
+  background: var(--accent-blue-bg);
+  border-color: var(--accent-blue);
+  color: var(--ink);
+}
+.box-info.proof h4 { color: var(--accent-blue); }
+[data-theme="dark"] .box-info.proof h4 { color: #90CAF9; }
+
+.box-info.trap {
+  background: var(--accent-red-bg);
+  border-color: var(--accent-red);
+  color: var(--ink);
+}
+.box-info.trap h4 { color: var(--accent-red); }
+[data-theme="dark"] .box-info.trap h4 { color: #FF8A80; }
+
+/* Teacher Voice Bubble */
+.script-box {
+  background: var(--accent-gold-bg);
+  border: 2px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+.script-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.script-bar h4 {
+  margin: 0;
+  color: var(--accent-gold);
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+[data-theme="dark"] .script-bar h4 { color: #F5BC38; }
+.btn-copy {
+  background: var(--surface);
+  border: 1px solid var(--accent-gold);
+  color: var(--ink);
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-copy:hover {
+  background: var(--accent-gold);
+  color: #fff;
+}
+.script-quote {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Interactive Lab Section (Section 2) */
+.lab-card {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.calc-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.calc-input {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: "Chakra Petch", sans-serif;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--ink);
+  background: var(--surface-subtle);
+  color: var(--ink);
+  width: 140px;
+}
+.quick-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.quick-chip {
+  background: var(--surface-subtle);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+.quick-chip:hover {
+  background: var(--primary-bg);
+  border-color: var(--primary);
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+  .calc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.func-stat-card {
+  background: var(--surface-subtle);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.15s;
+}
+.func-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+}
+.func-stat-card .symbol {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+}
+.func-stat-card .val {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+  margin: 4px 0;
+}
+.func-stat-card .desc {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+/* Theory Cards */
+.theory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 768px) {
+  .theory-grid { grid-template-columns: 1fr; }
+}
+.theory-card {
+  background: var(--surface-subtle);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+.theory-card h4 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+}
+[data-theme="dark"] .theory-card h4 { color: var(--primary); }
+.formula-badge {
+  display: inline-block;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-family: "Chakra Petch", monospace;
+  margin: 4px 0 8px;
+}
+
+/* Matrix Table View */
+.table-responsive {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+}
+table.summary-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+table.summary-tbl th, table.summary-tbl td {
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+table.summary-tbl th {
+  background: var(--surface-subtle);
+  font-weight: 700;
+  font-family: "Chakra Petch", sans-serif;
+}
+table.summary-tbl tr:hover {
+  background: var(--surface-subtle);
+}
+.pill-ans {
+  display: inline-block;
+  background: var(--primary-bg);
+  color: var(--primary-dark);
+  border: 1px solid var(--primary);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+[data-theme="dark"] .pill-ans { color: #38D9BA; }
+
+/* Print Rules */
+@media print {
+  .header-actions, .stage-bar, .sub-nav, .btn-copy, .quick-chips, #calcInput { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .q-card { page-break-inside: avoid; border: 1px solid #999 !important; box-shadow: none !important; margin-bottom: 20px; }
+  .script-box { background: #fff9ea !important; border: 1px solid #B07800 !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- Hero Header -->
+  <header class="hero-header">
+    <div class="header-flex">
+      <div class="header-info">
+        <h1>
+          <span>ศูนย์การเรียนรู้ทฤษฎีจำนวน (Number Theory Hub)</span>
+          <span class="badge-tag">สอวน.คณิตศาสตร์</span>
+        </h1>
+        <p class="header-desc">
+          ชุดเครื่องมือสำหรับ <b>"ก่อนเรียน" (Pre-test)</b> เพื่อเตรียมความพร้อม และ <b>"หลังเรียน" (Post-test)</b> เพื่อประเมินผลฟังก์ชันเลขคณิต (φ, τ, σ, μ) พร้อมห้องทดลองคำนวณและสคริปต์แก้ความง่วงสำหรับผู้สอน
+        </p>
+      </div>
+      <div class="header-actions">
+        <a href="https://create.kahoot.it/creator/3971c251-3f78-4d8b-913d-664a9c510215" target="_blank" rel="noopener" class="btn-kahoot pre">
+          🚀 Kahoot! ก่อนเรียน
+        </a>
+        <a href="https://create.kahoot.it/creator/2a88c63a-5b47-46d4-be55-523fc5a27825" target="_blank" rel="noopener" class="btn-kahoot post">
+          🔥 Kahoot! หลังเรียน
+        </a>
+        <button class="btn-ctrl" id="themeToggleBtn" title="สลับธีม สว่าง/มืด">
+          🌓 <span id="themeText">ธีม</span>
+        </button>
+        <button class="btn-ctrl" onclick="window.print()" title="พิมพ์หรือบันทึกเป็น PDF">
+          🖨️ พิมพ์
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4-Stage Navigation Bar -->
+  <div class="stage-bar">
+    <button class="stage-tab-btn active" data-stage="pre" onclick="setStage('pre')">
+      <div class="stage-icon">📘</div>
+      <div class="stage-meta">
+        <strong>1. ก่อนเรียน (Pre-test)</strong>
+        <span>14 ข้อทดสอบ & จุดดักพื้นฐาน</span>
+      </div>
+    </button>
+    <button class="stage-tab-btn" data-stage="lab" onclick="setStage('lab')">
+      <div class="stage-icon">🧪</div>
+      <div class="stage-meta">
+        <strong>2. ห้องทดลองฟังก์ชัน</strong>
+        <span>คำนวณสด φ, τ, σ, μ</span>
+      </div>
+    </button>
+    <button class="stage-tab-btn" data-stage="post" onclick="setStage('post')">
+      <div class="stage-icon">📙</div>
+      <div class="stage-meta">
+        <strong>3. หลังเรียน (Post-test)</strong>
+        <span>15 ข้อคัดเลือก สอวน.</span>
+      </div>
+    </button>
+    <button class="stage-tab-btn" data-stage="analytics" onclick="setStage('analytics')">
+      <div class="stage-icon">📈</div>
+      <div class="stage-meta">
+        <strong>4. สรุปผล & พัฒนาการ</strong>
+        <span>เปรียบเทียบ ก่อน vs หลังเรียน</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Secondary Controls (Sub-nav) -->
+  <div id="subControls" class="sub-nav">
+    <div class="mode-switch-group">
+      <button class="mode-btn active" data-view="teacher" onclick="setViewMode('teacher')">🎙️ โหมดครูผู้สอน (สคริปต์ & จุดดัก)</button>
+      <button class="mode-btn" data-view="student" onclick="setViewMode('student')">🎮 โหมดลองทำควิซ (นักเรียน)</button>
+      <button class="mode-btn" data-view="table" onclick="setViewMode('table')">📊 ตารางสรุปย่อ</button>
+    </div>
+    <div class="filter-search-box">
+      <input type="text" id="filterInput" placeholder="ค้นหาข้อคำถาม, สูตร, จุดดัก, ทฤษฎี..." oninput="handleSearch()">
+    </div>
+  </div>
+
+  <!-- SECTION 1 & 3: QUESTION CARDS VIEW -->
+  <div id="questionsSection">
+    <div id="cardsList" class="cards-flow"></div>
+  </div>
+
+  <!-- SECTION 2: INTERACTIVE LAB (CALCULATOR) -->
+  <div id="labSection" style="display:none;">
+    <div class="lab-card">
+      <h2>🧪 ห้องทดลองแยกตัวประกอบ & ฟังก์ชันเลขคณิต</h2>
+      <p style="color:var(--ink-secondary); margin-bottom:18px;">
+        ใส่จำนวนเต็มบวก <i>n</i> เพื่อดูการเขียนในรูปแบบบัญญัติ (Canonical Form) และค่าของฟังก์ชัน φ(n), τ(n), σ(n), μ(n) แบบทันที
+      </p>
+
+      <div class="calc-controls">
+        <label><b>ใส่ค่า n:</b></label>
+        <input type="number" id="calcInput" class="calc-input" min="1" max="99999" value="72" oninput="updateLab()">
+        <div class="quick-chips">
+          <span style="align-self:center; font-size:0.9rem; color:var(--ink-secondary);">ตัวอย่างแนะนำ:</span>
+          <button class="quick-chip" onclick="setLabN(12)">12</button>
+          <button class="quick-chip" onclick="setLabN(60)">60</button>
+          <button class="quick-chip" onclick="setLabN(72)">72</button>
+          <button class="quick-chip" onclick="setLabN(100)">100</button>
+          <button class="quick-chip" onclick="setLabN(2026)">2026</button>
+        </div>
+      </div>
+
+      <div style="background:var(--surface-subtle); padding:16px 20px; border-radius:var(--radius-md); margin-bottom:20px; border:1px solid var(--line);">
+        <span style="font-size:1.1rem; color:var(--ink-secondary);">รูปแบบบัญญัติ (Canonical Form):</span>
+        <div id="canonicalDisplay" style="font-size:1.6rem; font-weight:700; color:var(--primary); margin-top:4px;"></div>
+      </div>
+
+      <div class="calc-grid">
+        <div class="func-stat-card">
+          <div class="symbol">φ(n) ออยเลอร์ ฟี</div>
+          <div class="val" id="valPhi">24</div>
+          <div class="desc">จำนวนเต็มบวก ≤ n ที่ coprime กับ n</div>
+        </div>
+        <div class="func-stat-card">
+          <div class="symbol">τ(n) จำนวนตัวหาร</div>
+          <div class="val" id="valTau">12</div>
+          <div class="desc">จำนวนตัวหารบวกทั้งหมด</div>
+        </div>
+        <div class="func-stat-card">
+          <div class="symbol">σ(n) ผลรวมตัวหาร</div>
+          <div class="val" id="valSigma">195</div>
+          <div class="desc">ผลรวมของตัวหารบวกทั้งหมด</div>
+        </div>
+        <div class="func-stat-card">
+          <div class="symbol">μ(n) ฟังก์ชันเมอบิอุส</div>
+          <div class="val" id="valMu">0</div>
+          <div class="desc">ค่า 1, -1 หรือ 0 (มีตัวซ้ำหรือไม่)</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:24px;">
+        <h3>ตัวหารบวกทั้งหมดของ n (<span id="divCount"></span> ตัว):</h3>
+        <div id="divList" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;"></div>
+      </div>
+
+      <h3>สรุปสูตรลัด 4 ฟังก์ชันสำหรับสอบ สอวน.</h3>
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h4>1. ออยเลอร์ ฟี-ฟังก์ชัน φ(n)</h4>
+          <div class="formula-badge">φ(pᵃ) = pᵃ - pᵃ⁻¹ = pᵃ(1 - 1/p)</div>
+          <p style="margin:0; font-size:0.92rem; color:var(--ink-secondary);">
+            ฟังก์ชันการคูณ: ถ้า (m, n) = 1 แล้ว φ(mn) = φ(m)φ(n) และสำหรับ n ≥ 3 ค่า φ(n) จะเป็นเลขคู่เสมอ!
+          </p>
+        </div>
+        <div class="theory-card">
+          <h4>2. จำนวนตัวหารบวก τ(n)</h4>
+          <div class="formula-badge">τ(n) = (a₁ + 1)(a₂ + 1)...(aₖ + 1)</div>
+          <p style="margin:0; font-size:0.92rem; color:var(--ink-secondary);">
+            สัจพจน์สำคัญ: τ(n) เป็นเลขคี่ <b>ก็ต่อเมื่อ</b> n เป็นกำลังสองสมบูรณ์ และผลคูณตัวหารเท่ากับ n^(τ(n)/2)
+          </p>
+        </div>
+        <div class="theory-card">
+          <h4>3. ผลรวมตัวหารบวก σ(n)</h4>
+          <div class="formula-badge">σ(pᵃ) = 1 + p + p² + ... + pᵃ = (pᵃ⁺¹ - 1)/(p - 1)</div>
+          <p style="margin:0; font-size:0.92rem; color:var(--ink-secondary);">
+            ทฤษฎีบท: σ(n) = n + 1 <b>ก็ต่อเมื่อ</b> n เป็นจำนวนเฉพาะ และถ้า σ(n) = 2n เรียกว่าจำนวนสมบูรณ์
+          </p>
+        </div>
+        <div class="theory-card">
+          <h4>4. ฟังก์ชันเมอบิอุส μ(n)</h4>
+          <div class="formula-badge">μ(1)=1, μ(p₁...pₖ)=(-1)ᵏ, μ=0 ถ้า p²|n</div>
+          <p style="margin:0; font-size:0.92rem; color:var(--ink-secondary);">
+            ผลรวมมหาชน: สำหรับ n > 1 จะได้ ∑_{d|n} μ(d) = 0 เสมอ และเลขเรียงกัน 4 ตัวผลคูณ μ ย่อมเป็น 0 เสมอ
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: ANALYTICS & SCORE DASHBOARD -->
+  <div id="analyticsSection" style="display:none;">
+    <div class="analytics-card">
+      <div class="metric-box">
+        <h3>คะแนนก่อนเรียน (Pre-test)</h3>
+        <div class="metric-val" id="metricPreScore">0 / 14</div>
+        <div class="metric-note" id="metricPrePct">ยังไม่ได้ทำ</div>
+      </div>
+      <div class="metric-box">
+        <h3>คะแนนหลังเรียน (Post-test)</h3>
+        <div class="metric-val" id="metricPostScore">0 / 15</div>
+        <div class="metric-note" id="metricPostPct">ยังไม่ได้ทำ</div>
+      </div>
+      <div class="metric-box">
+        <h3>พัฒนาการ (Growth Delta)</h3>
+        <div class="metric-val" id="metricDelta" style="color:var(--accent-gold);">+0%</div>
+        <div class="metric-note">ความก้าวหน้าการเรียนรู้</div>
+      </div>
+    </div>
+
+    <div class="lab-card">
+      <h3>📋 สรุปผลวิเคราะห์ความพร้อมสู่ค่าย สอวน.</h3>
+      <p id="analyticsDiagnosis" style="font-size:1.05rem; line-height:1.7;">
+        กรุณาทำแบบทดสอบในแท็บ <b>"1. ก่อนเรียน"</b> และ <b>"3. หลังเรียน"</b> ในโหมดนักเรียน เพื่อประเมินและเปรียบเทียบพัฒนาการ
+      </p>
+      <div style="margin-top:20px;">
+        <button class="btn-ctrl" onclick="clearAllScores()">🔄 ล้างข้อมูลการทำแบบทดสอบทั้งหมด</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE VIEW -->
+  <div id="tableView" class="table-responsive" style="display:none;">
+    <table class="summary-tbl">
+      <thead>
+        <tr>
+          <th style="width:40px;">ข้อ</th>
+          <th style="width:110px;">แท็ก / เวลา</th>
+          <th style="width:32%;">คำถาม</th>
+          <th style="width:160px;">คำตอบ</th>
+          <th>ทฤษฎี & ที่มาทางคณิตศาสตร์</th>
+          <th>จุดดักมหาชน</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const PRE_DATA = [{"id": "pre_1", "num": 1, "type": "quiz", "time": "20s", "tag": "นิยาม", "tag_color": "#0A7567", "q": "ข้อใดต่อไปนี้ 'ไม่ใช่' ทั้งจำนวนเฉพาะ และ 'ไม่ใช่' ทั้งจำนวนประกอบ?", "choices": [{"text": "0", "color": "red", "correct": false}, {"text": "1", "color": "blue", "correct": true}, {"text": "2", "color": "yellow", "correct": false}, {"text": "-1", "color": "green", "correct": false}], "ans": "1", "math_proof": "ตามนิยามในทฤษฎีจำนวน จำนวนเฉพาะ (Prime) และจำนวนประกอบ (Composite) ถูกนิยามบนเซตของจำนวนเต็มบวกที่มากกว่า 1 (n > 1) เท่านั้น สำหรับ 1 เป็นเอกลักษณ์การคูณ จึงจัดเป็น 'หน่วย' (Unit) ไม่เข้าพวกทั้งสองกลุ่ม", "trap": "เด็กหลายคนมักจำสับสนว่า 1 เป็นจำนวนเฉพาะตัวแรก หรือคิดว่า 0 อยู่ในขอบเขตนี้", "script": "ใครตอบ 1 ยกมือขึ้น! ข้อนี้เป็นคำถามคลาสสิกที่ชอบหลอกเด็กค่าย จำไว้เลยนะว่า 1 เป็นเอกลักษณ์ ไม่ใช่ทั้งจำนวนเฉพาะและจำนวนประกอบ ถ้าใครเผลอให้ 1 เป็นเฉพาะ ทฤษฎีบทหลักมูลเลขคณิตจะพังทันทีเพราะจะแยกตัวประกอบได้ไม่จำกัดแบบ!"}, {"id": "pre_2", "num": 2, "type": "true_false", "time": "20s", "tag": "จุดดัก", "tag_color": "#C2352D", "q": "ถ้า a และ b เป็นจำนวนเฉพาะสัมพัทธ์กัน (Coprime) แล้ว a และ b ต้องเป็นจำนวนเฉพาะทั้งคู่", "choices": [{"text": "จริง (True)", "color": "red", "correct": false}, {"text": "เท็จ (False)", "color": "blue", "correct": true}], "ans": "เท็จ (False)", "math_proof": "คำว่า 'จำนวนเฉพาะสัมพัทธ์' หมายถึง gcd(a, b) = 1 ตัวเลขแต่ละตัวไม่จำเป็นต้องเป็นจำนวนเฉพาะ เช่น gcd(8, 9) = 1 ซึ่งทั้ง 8 = 2³ และ 9 = 3² ต่างเป็นจำนวนประกอบทั้งคู่", "trap": "คำว่า 'จำนวนเฉพาะ' ในชื่อ 'จำนวนเฉพาะสัมพัทธ์' ทำให้เด็กเผลอคิดว่าตัวมันเองต้องเป็นจำนวนเฉพาะด้วย", "script": "โดนคำว่า 'จำนวนเฉพาะ' หลอกกันไปกี่คน! จำนวนเฉพาะสัมพัทธ์แปลแค่ว่า 'ไม่มีตัวหารร่วมกันนอกจาก 1' ดูอย่าง 8 กับ 9 สิครับ เป็นจำนวนประกอบทั้งคู่แต่เป็น coprime กันนะ!"}, {"id": "pre_3", "num": 3, "type": "quiz", "time": "20s", "tag": "นิยาม", "tag_color": "#0A7567", "q": "ตามบทนิยามการหารลงตัว b|a สัญลักษณ์ 0|a จะเป็นจริงเมื่อ a มีค่าเท่าใด?", "choices": [{"text": "a เป็นจำนวนเต็มใดๆ ก็ได้", "color": "red", "correct": false}, {"text": "ไม่มี a ใดเป็นจริงเลย เพราะตัวหารห้ามเป็น 0", "color": "blue", "correct": true}, {"text": "a = 0", "color": "yellow", "correct": false}, {"text": "a = 1", "color": "green", "correct": false}], "ans": "ไม่มี a ใดเป็นจริงเลย เพราะตัวหารห้ามเป็น 0", "math_proof": "บทนิยามระบุชัดเจนว่า: ให้ a เป็นจำนวนเต็ม และ b เป็นจำนวนเต็มที่ไม่เท่ากับศูนย์ (b ≠ 0) เรากล่าวว่า b|a ก็ต่อเมื่อมีจำนวนเต็ม c ที่ทำให้ a = bc", "trap": "เด็กมักคิดว่า 0|0 จริง เพราะ 0 = 0 × c", "script": "หยุดก่อน! อย่าเพิ่งคิดเลข ดูนิยามก่อนครับ บทนิยามในคณิตศาสตร์ระบุไว้ชัดเจนว่า ตัวหาร b ต้องไม่เท่ากับ 0 ดังนั้นสัญลักษณ์ 0|a ไม่มีความหมายในระบบนี้ครับ!"}, {"id": "pre_4", "num": 4, "type": "quiz", "time": "30s", "tag": "ทฤษฎีบท", "tag_color": "#2468B5", "q": "การเขียน 360 ในรูปแบบบัญญัติ (Canonical Form / Prime Factorization) คือข้อใด?", "choices": [{"text": "4 × 9 × 10", "color": "red", "correct": false}, {"text": "2³ × 3² × 5", "color": "blue", "correct": true}, {"text": "2² × 3³ × 5", "color": "yellow", "correct": false}, {"text": "8 × 9 × 5", "color": "green", "correct": false}], "ans": "2³ × 3² × 5", "math_proof": "รูปแบบบัญญัติต้องเขียนอยู่ในรูป p₁^{a₁} p₂^{a₂} ... p_k^{a_k} โดยที่ฐาน p_i ทุกตัวต้องเป็น 'จำนวนเฉพาะ' ที่แตกต่างกัน และ a_i เป็นจำนวนเต็มบวก สำหรับ 360 = 8 × 9 × 5 = 2³ × 3² × 5", "trap": "เด็กที่รีบคิดจะไปกา 8 × 9 × 5 หรือ 4 × 9 × 10 เพราะผลคูณได้ 360 เท่ากัน แต่ฐานยังไม่ใช่จำนวนเฉพาะ", "script": "ช้อยส์อื่นคูณกันได้ 360 ก็จริง แต่มันยังไม่ใช่ 'รูปแบบบัญญัติ' ฐานต้องถูกย่อยจนเป็นจำนวนเฉพาะเท่านั้น ข้อนี้ต้องได้ 2³ × 3² × 5 เท่านั้นครับ"}, {"id": "pre_5", "num": 5, "type": "true_false", "time": "20s", "tag": "นิยาม", "tag_color": "#0A7567", "q": "จำนวนเฉพาะที่เป็นจำนวนคู่ มีเพียงตัวเดียวในระบบจำนวน คือ 2", "choices": [{"text": "จริง (True)", "color": "red", "correct": true}, {"text": "เท็จ (False)", "color": "blue", "correct": false}], "ans": "จริง (True)", "math_proof": "ถ้า n > 2 เป็นจำนวนคู่ แสดงว่ามี 2 หาร n ลงตัว ทำให้ n มีตัวหารบวกอย่างน้อยสามตัวคือ 1, 2, n ส่งผลให้ n เป็นจำนวนประกอบเสมอ", "trap": "สับสนนิยามหรือคิดว่าเลขติดลบหรือเลขคู่อื่นอาจมีข้อยกเว้น", "script": "2 คือจำนวนเฉพาะที่พิเศษที่สุดในโลก เพราะมันเป็น 'จำนวนคู่ตัวเดียว' ที่เป็นจำนวนเฉพาะ จำนวนคู่ที่เหลือหลังจากนี้ โดน 2 หารลงตัวหมด กลายเป็นจำนวนประกอบเรียบ!"}, {"id": "pre_6", "num": 6, "type": "quiz", "time": "30s", "tag": "คิดเลขเร็ว", "tag_color": "#B07800", "q": "ในการตรวจสอบว่า 101 เป็นจำนวนเฉพาะหรือไม่ ต้องทดสอบเอาจำนวนเฉพาะที่ไม่เกินค่าใดไปหาร?", "choices": [{"text": "ไม่เกิน 50", "color": "red", "correct": false}, {"text": "ไม่เกิน 10", "color": "blue", "correct": true}, {"text": "ไม่เกิน 20", "color": "yellow", "correct": false}, {"text": "ต้องทดสอบทุกจำนวนถึง 100", "color": "green", "correct": false}], "ans": "ไม่เกิน 10", "math_proof": "ทฤษฎีบทระบุว่า ถ้า n เป็นจำนวนประกอบ จะต้องมีตัวหารเฉพาะ p ที่ p ≤ √n ดังนั้นถ้าไม่มีจำนวนเฉพาะ p ≤ √n ตัวใดหารลงตัว n จะเป็นจำนวนเฉพาะทันที ซึ่ง √101 ≈ 10.04 จำนวนเฉพาะที่ไม่เกิน 10 คือ 2, 3, 5, 7", "trap": "เสียเวลาทดสอบไปจนถึง 50 หรือทดสอบถึง 100", "script": "ใครกำลังจะไล่หารยัน 50 วางปากกาลงเดี๋ยวนี้! ใช้ทฤษฎี √n สิครับ √101 ไม่ถึง 11 ลองแค่ 2, 3, 5, 7 ไม่ลงตัว ปิดจ๊อบ ตอบจำนวนเฉพาะได้เลย ประหยัดเวลาไปครึ่งวัน!"}, {"id": "pre_7", "num": 7, "type": "quiz", "time": "30s", "tag": "จุดดัก", "tag_color": "#C2352D", "q": "ตามขั้นตอนวิธีการหาร (Division Algorithm) ถ้าหาร -17 ด้วย 5 เศษเหลือ r คือข้อใด?", "choices": [{"text": "-2", "color": "red", "correct": false}, {"text": "2", "color": "blue", "correct": false}, {"text": "3", "color": "yellow", "correct": true}, {"text": "-3", "color": "green", "correct": false}], "ans": "3", "math_proof": "ขั้นตอนวิธีการหารกำหนดเงื่อนไขสำคัญว่า 0 ≤ r < |b| (เศษต้องไม่ติดลบ) จาก -17 = 5(-4) + 3 จะเห็นว่าผลหารคือ -4 และเศษคือ 3 ซึ่งสอดคล้องกับ 0 ≤ 3 < 5", "trap": "เด็กส่วนใหญ่ตอบ -2 เพราะคิดว่า -17 = 5(-3) - 2", "script": "เสียงฮือฮามาแล้ว! ใครตอบ -2 สารภาพมาซะดีๆ! ในทฤษฎีจำนวน 'เศษเหลือห้ามติดลบ' เด็ดขาด เศษต้องเป็นบวกหรือศูนย์เท่านั้น ต้องถอยผลหารไปที่ -4 เพื่อให้เศษเด้งกลับมาเป็น +3 จำจุดนี้ไว้เลย ข้อสอบชอบออกหลอก!"}, {"id": "pre_8", "num": 8, "type": "quiz", "time": "30s", "tag": "คิดเลขเร็ว", "tag_color": "#B07800", "q": "ถ้า ห.ร.ม. ของสองจำนวนบวกคือ 6 และ ค.ร.น. คือ 72 ผลคูณของสองจำนวนนี้เท่ากับเท่าใด?", "choices": [{"text": "216", "color": "red", "correct": false}, {"text": "432", "color": "blue", "correct": true}, {"text": "864", "color": "yellow", "correct": false}, {"text": "78", "color": "green", "correct": false}], "ans": "432", "math_proof": "จากเอกลักษณ์พื้นฐานของจำนวนเต็มบวกสองจำนวน: gcd(a, b) × lcm(a, b) = a × b ดังนั้น a × b = 6 × 72 = 432", "trap": "เด็กเสียเวลานั่งแก้สมการหาตัวเลข a, b ทั้งที่โจทย์ถามผลคูณโดยตรง", "script": "ข้อนี้ไม่ต้องไปนั่งเดาว่าเลขสองตัวนั้นคืออะไร ใช้เอกลักษณ์ ห.ร.ม. คูณ ค.ร.น. เท่ากับผลคูณของสองจำนวนนั้นได้เลย 6 × 72 = 432 ตอบใน 5 วินาที!"}, {"id": "pre_9", "num": 9, "type": "quiz", "time": "30s", "tag": "ทฤษฎีบท", "tag_color": "#2468B5", "q": "ผลคูณของจำนวนเต็ม 3 จำนวนที่เรียงติดต่อกัน n(n+1)(n+2) จะหารด้วยจำนวนใดลงตัวเสมอ?", "choices": [{"text": "3", "color": "red", "correct": false}, {"text": "4", "color": "blue", "correct": false}, {"text": "6", "color": "yellow", "correct": true}, {"text": "12", "color": "green", "correct": false}], "ans": "6", "math_proof": "ทฤษฎีบท: ผลคูณของจำนวนเต็ม k จำนวนที่เรียงติดกันจะหารด้วย k! ลงตัวเสมอ สำหรับ 3 จำนวนติดกันจึงหารด้วย 3! = 6 ลงตัว", "trap": "ตอบ 3 เพราะลืมตัวประกอบ 2 ของจำนวนคู่", "script": "เลขเรียงกัน 3 ตัว มีคู่แน่ๆ อย่างน้อย 1 ตัว มีตัวที่ 3 หารลงตัวแน่ๆ 1 ตัว 2 × 3 = 6 ยังไงก็หารลงตัวเสมอ และจำเป็นสูตรไว้เลยว่า k ตัวติดกัน หารด้วย k! ลงตัวชัวร์!"}, {"id": "pre_10", "num": 10, "type": "quiz", "time": "30s", "tag": "สอวน.บอส", "tag_color": "#6B4FD8", "q": "กำลังสองของจำนวนเต็มใดๆ (n²) เมื่อหารด้วย 4 จะไม่มีทางเหลือเศษเท่ากับข้อใด?", "choices": [{"text": "เศษ 0", "color": "red", "correct": false}, {"text": "เศษ 1", "color": "blue", "correct": false}, {"text": "เศษ 2 และ 3", "color": "yellow", "correct": true}, {"text": "เศษ 0 และ 1", "color": "green", "correct": false}], "ans": "เศษ 2 และ 3", "math_proof": "ถ้า n เป็นคู่: n = 2k ⇒ n² = 4k² (เศษ 0); ถ้า n เป็นคี่: n = 2k+1 ⇒ n² = 4(k²+k) + 1 (เศษ 1) ดังนั้น กำลังสองสมบูรณ์มอดุโล 4 จะได้เศษเป็น 0 หรือ 1 เท่านั้น ไม่มีทางเป็น 2 หรือ 3", "trap": "อ่านโจทย์ไม่รอบคอบ คิดว่าโจทย์ถามเศษที่เป็นไปได้", "script": "สมบัตินี้คืออาวุธลับของ สอวน. เลยนะ! เลขยกกำลังสองหารด้วย 4 เศษมีได้แค่ 0 กับ 1 เท่านั้น ถ้าไปเจอโจทย์สมการไดโอเฟนไทน์แล้วข้างหนึ่งเศษเป็น 2 หรือ 3 ตัดทิ้งได้ทันทีว่าไม่มีคำตอบ!"}, {"id": "pre_11", "num": 11, "type": "quiz", "time": "30s", "tag": "คิดเลขเร็ว", "tag_color": "#B07800", "q": "สำหรับทุกจำนวนเต็มบวก n ค่าของ ห.ร.ม. gcd(n, n+1) มีค่าเท่ากับเท่าใดเสมอ?", "choices": [{"text": "n", "color": "red", "correct": false}, {"text": "n + 1", "color": "blue", "correct": false}, {"text": "1", "color": "yellow", "correct": true}, {"text": "2", "color": "green", "correct": false}], "ans": "1", "math_proof": "ให้ d = gcd(n, n+1) จะได้ว่า d|n และ d|(n+1) ดังนั้น d|((n+1) - n) ⇒ d|1 เนื่องจาก d > 0 จึงได้ d = 1 เท่านั้น", "trap": "คิดว่าขึ้นกับว่า n เป็นคู่หรือคี่", "script": "เลขสองตัวที่อยู่ติดกัน เดินชนกันมาแบบนี้ ห.ร.ม. เป็น 1 เสมอ ผลต่างมันห่างกันแค่ 1 ตัวหารร่วมจะไปเกิน 1 ได้ยังไง จริงไหมครับ!"}, {"id": "pre_12", "num": 12, "type": "quiz", "time": "45s", "tag": "สอวน.บอส", "tag_color": "#6B4FD8", "q": "สมการไดโอเฟนไทน์เชิงเส้นในข้อใดต่อไปนี้ 'ไม่มีผลเฉลย' เป็นจำนวนเต็ม?", "choices": [{"text": "2x + 4y = 8", "color": "red", "correct": false}, {"text": "3x + 6y = 12", "color": "blue", "correct": false}, {"text": "4x + 6y = 11", "color": "yellow", "correct": true}, {"text": "5x + 7y = 1", "color": "green", "correct": false}], "ans": "4x + 6y = 11", "math_proof": "ทฤษฎีบท: สมการ ax + by = c มีผลเฉลยจำนวนเต็ม ก็ต่อเมื่อ gcd(a, b) | c ในข้อนี้ gcd(4, 6) = 2 แต่ 2 ∤ 11 (ฝั่งซ้ายเป็นเลขคู่ ฝั่งขวาเป็นเลขคี่) จึงไม่มีผลเฉลยจำนวนเต็ม", "trap": "พยายามทดเลขสุ่มแทนค่า x, y แทนที่จะเช็กเงื่อนไข gcd(a, b) | c", "script": "มองปุ๊บรู้ปั๊บ ดึงตัวร่วม 2 ออกมา ฝั่งซ้ายเป็นเลขคู่ ฝั่งขวาคือ 11 เป็นเลขคี่ คู่เท่ากับคี่เป็นไปไม่ได้ ดังนั้นสมการนี้ไม่มีคำตอบจำนวนเต็มแน่นอนครับ!"}, {"id": "pre_13", "num": 13, "type": "quiz", "time": "30s", "tag": "คิดเลขเร็ว", "tag_color": "#B07800", "q": "(ปูสู่ฟังก์ชัน τ) จำนวนเต็มบวก 24 มีตัวหารที่เป็นจำนวนเต็มบวกทั้งหมดกี่ตัว?", "choices": [{"text": "6 ตัว", "color": "red", "correct": false}, {"text": "8 ตัว", "color": "blue", "correct": true}, {"text": "10 ตัว", "color": "yellow", "correct": false}, {"text": "12 ตัว", "color": "green", "correct": false}], "ans": "8 ตัว", "math_proof": "24 = 2³ × 3¹ ตัวหารเกิดจากการเลือกกำลังของ 2 ได้ 4 แบบ (0, 1, 2, 3) และกำลังของ 3 ได้ 2 แบบ (0, 1) ตามกฎการนับคือ (3+1)(1+1) = 4 × 2 = 8 ตัว", "trap": "นั่งไล่ทีละตัวแล้วตกหล่น เช่น ลืม 1 หรือลืม 24", "script": "ใครนั่งแจกแจง 1, 2, 3, 4, 6, 8, 12, 24 ครบ 8 ตัวพอดี เก่งมาก! แต่วันนี้เราจะเรียนฟังก์ชัน τ(n) แค่เอาเลขชี้กำลังบวกหนึ่งแล้วคูณกัน (3+1)(1+1) = 8 ง่ายกว่าเยอะ!"}, {"id": "pre_14", "num": 14, "type": "quiz", "time": "30s", "tag": "นิยาม", "tag_color": "#0A7567", "q": "(ปูสู่ฟังก์ชัน φ) จำนวนเต็มบวกที่ไม่เกิน 12 และเป็นจำนวนเฉพาะสัมพัทธ์กับ 12 มีกี่ตัว?", "choices": [{"text": "2 ตัว", "color": "red", "correct": false}, {"text": "4 ตัว ({1, 5, 7, 11})", "color": "blue", "correct": true}, {"text": "6 ตัว", "color": "yellow", "correct": false}, {"text": "8 ตัว", "color": "green", "correct": false}], "ans": "4 ตัว ({1, 5, 7, 11})", "math_proof": "12 = 2² × 3 จำนวนที่ coprime กับ 12 คือจำนวนที่ไม่ถูกหารด้วย 2 และ 3 จาก 1 ถึง 12 ตัดพหุคูณของ 2 และ 3 ออก เหลือเพียง {1, 5, 7, 11} รวม 4 ตัว ซึ่งตรงกับ φ(12) = 4", "trap": "ลืมเลข 1 หรือนึกว่าเลขคู่เป็น coprime ได้", "script": "นับได้ 4 ตัวใช่ไหมครับ? ตัวเลข 4 ตัวนี้แหละคือที่มาของ ออยเลอร์ ฟี-ฟังก์ชัน φ(12) = 4 ซึ่งเรากำลังจะไปลุยกันเต็มๆ ในบทถัดไป!"}];
+const POST_DATA = [{"id": "post_1", "num": 1, "type": "quiz", "time": "20s", "tag": "นิยาม", "tag_color": "#0A7567", "q": "ค่าของ φ(1) + τ(1) + σ(1) + μ(1) เท่ากับเท่าใด?", "choices": [{"text": "1", "color": "red", "correct": false}, {"text": "2", "color": "blue", "correct": false}, {"text": "3", "color": "yellow", "correct": false}, {"text": "4", "color": "green", "correct": true}], "ans": "4", "math_proof": "จากนิยามของแต่ละฟังก์ชันที่ n = 1: φ(1) = 1, τ(1) = 1, σ(1) = 1, μ(1) = 1 ผลรวม = 1 + 1 + 1 + 1 = 4", "trap": "เด็กมักคิดว่า n = 1 ไม่มีตัวประกอบเฉพาะ แล้วเผลอตอบ 0 ใน μ(1) หรือ φ(1)", "script": "เปิดหัวมาก็วัดความจำนิยามเลย! ที่ n = 1 ทุกฟังก์ชันมีค่าเท่ากับ 1 เหมือนกันหมด จำง่ายๆ 1+1+1+1 = 4 อย่าไปคิดซับซ้อนนะ!"}, {"id": "post_2", "num": 2, "type": "true_false", "time": "20s", "tag": "จุดดัก", "tag_color": "#C2352D", "q": "ถ้า f เป็นฟังก์ชันการคูณ แล้ว f(12) = f(2)·f(6) เสมอ", "choices": [{"text": "จริง (True)", "color": "red", "correct": false}, {"text": "เท็จ (False)", "color": "blue", "correct": true}], "ans": "เท็จ (False)", "math_proof": "บทนิยามระบุว่า f(mn) = f(m)f(n) ก็ต่อเมื่อ gcd(m, n) = 1 เท่านั้น แต่ gcd(2, 6) = 2 ≠ 1 จึงไม่สามารถกระจายได้ (การกระจายที่ถูกสำหรับ 12 ต้องเป็น f(4) · f(3))", "trap": "จำนิยามไม่ครบ ลืมเงื่อนไขจำนวนเฉพาะสัมพัทธ์", "script": "โดนหลอกกันเพียบ! ท่องนิยามฟังก์ชันการคูณกันใหม่เร็ว: 'ต้องเป็นจำนวนเฉพาะสัมพัทธ์กันเท่านั้นถึงจะแยกคูณได้' 2 กับ 6 ห.ร.ม. เป็น 2 ไม่ใช่ 1 แยกไม่ได้นะ ต้องแยกเป็น 4 กับ 3 ครับ!"}, {"id": "post_3", "num": 3, "type": "quiz", "time": "20s", "tag": "คิดเลขเร็ว", "tag_color": "#B07800", "q": "ค่าของ μ(2026) ฟังก์ชันเมอบิอุสของปี 2026 เท่ากับเท่าใด?", "choices": [{"text": "-1", "color": "red", "correct": false}, {"text": "1", "color": "blue", "correct": true}, {"text": "0", "color": "yellow", "correct": false}, {"text": "ไม่นิยาม", "color": "green", "correct": false}], "ans": "1", "math_proof": "แยกตัวประกอบ 2026 = 2 × 1013 โดย 1013 เป็นจำนวนเฉพาะ (√1013 ≈ 31.8 ไม่มีจำนวนเฉพาะ ≤ 31 หารลงตัว) เป็นผลคูณของจำนวนเฉพาะ 2 ตัวที่ต่างกัน ไม่มีกำลังสองหารลงตัว ดังนั้น μ(2026) = (-1)² = 1", "trap": "คิดเลขไม่ทันหรือไม่แน่ใจว่า 1013 เป็นจำนวนเฉพาะหรือไม่", "script": "ปี 2026 แยกตัวประกอบได้ 2 คูณ 1013 ซึ่งเป็นจำนวนเฉพาะทั้งคู่! เป็นจำนวนเฉพาะต่างกัน 2 ตัว ไม่มีตัวซ้ำ (-1)² ได้ 1 ข้อนี้ใครคิดเลขทันได้คะแนนความไวไปเต็มๆ!"}, {"id": "post_4", "num": 4, "type": "quiz", "time": "20s", "tag": "ทฤษฎีบท", "tag_color": "#2468B5", "q": "สำหรับจำนวนเต็มบวก n ≥ 3 ข้อใดเป็นจริงเกี่ยวกับ φ(n) เสมอ?", "choices": [{"text": "เป็นจำนวนคู่เสมอ", "color": "red", "correct": true}, {"text": "เป็นจำนวนคี่เสมอ", "color": "blue", "correct": false}, {"text": "เป็นจำนวนเฉพาะเสมอ", "color": "yellow", "correct": false}, {"text": "เป็นกำลังสองสมบูรณ์เสมอ", "color": "green", "correct": false}], "ans": "เป็นจำนวนคู่เสมอ", "math_proof": "ถ้า n มีตัวประกอบเฉพาะคี่ p: φ(n) = φ(p^a)φ(m) = p^{a-1}(p-1)φ(m) ซึ่ง p-1 เป็นจำนวนคู่; ถ้า n ไม่มีเฉพาะคี่: n = 2^a (a ≥ 2) จะได้ φ(2^a) = 2^{a-1} ซึ่งเป็นจำนวนคู่เสมอ", "trap": "คิดว่ามีบางจำนวนที่ให้ค่า φ เป็นคี่ เช่น ลืมไปว่า φ(1)=1 และ φ(2)=1 แต่โจทย์ถาม n ≥ 3", "script": "ทฤษฎีบทบอกว่า ตั้งแต่ 3 เป็นต้นไป φ(n) เป็น 'จำนวนคู่' ตลอดกาล! เพราะถ้ามีเฉพาะคี่ p-1 จะดึงให้เป็นคู่ หรือถ้ามีแต่เลข 2 ยกกำลัง กำลังของมันก็ยังเหลือเป็นเลขคู่อยู่ดี!"}, {"id": "post_5", "num": 5, "type": "quiz", "time": "30s", "tag": "สอวน.บอส", "tag_color": "#6B4FD8", "q": "τ(n) เป็นจำนวนคี่ ก็ต่อเมื่อ n สอดคล้องกับเงื่อนไขใด?", "choices": [{"text": "n เป็นจำนวนเฉพาะ", "color": "red", "correct": false}, {"text": "n เป็นจำนวนคี่", "color": "blue", "correct": false}, {"text": "n เป็นกำลังสองสมบูรณ์", "color": "yellow", "correct": true}, {"text": "n เป็นพหุคูณของ 4", "color": "green", "correct": false}], "ans": "n เป็นกำลังสองสมบูรณ์", "math_proof": "τ(n) = ∏(a_i + 1) ผลคูณจะเป็นคี่ได้ ทุกวงเล็บ a_i + 1 ต้องเป็นคี่ ⇔ a_i ทุกตัวต้องเป็นจำนวนคู่ ⇔ n เป็นกำลังสองสมบูรณ์", "trap": "คิดว่า n ต้องเป็นจำนวนคี่", "script": "ข้อนี้สัจพจน์ยอดฮิต สอวน.! ตัวหารปกติมันมาเป็นคู่ d คู่กับ n/d มันเลยเป็นเลขคู่ตลอด ยกเว้นตอนที่ d = n/d คือตัวมันเองชนกันเป็นกำลังสองสมบูรณ์ ทำให้เหลือเศษตัวเดียว ผลรวมจำนวนตัวเลยเป็นเลขคี่!"}, {"id": "post_6", "num": 6, "type": "quiz", "time": "30s", "tag": "นิยาม", "tag_color": "#0A7567", "q": "สำหรับ n > 1 ข้อความ 'σ(n) = n + 1' มีความหมายเทียบเท่ากับข้อใด?", "choices": [{"text": "n เป็นจำนวนสมบูรณ์", "color": "red", "correct": false}, {"text": "n เป็นจำนวนเฉพาะ", "color": "blue", "correct": true}, {"text": "n เป็นกำลังสองสมบูรณ์", "color": "yellow", "correct": false}, {"text": "ห.ร.ม. ของ n กับ 2 คือ 1", "color": "green", "correct": false}], "ans": "n เป็นจำนวนเฉพาะ", "math_proof": "ตัวหารบวกของ n มี 1 และ n เสมอ ผลบวกขั้นต่ำคือ 1 + n ถ้า σ(n) = n + 1 แสดงว่าไม่มีตัวหารบวกอื่นใดอีกเลยนอกจาก 1 และ n นั่นคือ n เป็นจำนวนเฉพาะ", "trap": "สับสนกับนิยามของ Perfect Number (ซึ่งคือ σ(n) = 2n)", "script": "ผลบวกตัวหารเท่ากับ n+1 พอดี แปลว่ามีตัวหารแค่เลข 1 กับตัวมันเองเท่านั้น ไม่มีใครอื่นแทรกมาได้ นิยามนี้คือ 'จำนวนเฉพาะ' แท้ๆ เลยครับ!"}, {"id": "post_7", "num": 7, "type": "quiz", "time": "30s", "tag": "ทฤษฎีบท", "tag_color": "#2468B5", "q": "ผลคูณ μ(n)·μ(n+1)·μ(n+2)·μ(n+3) มีค่าเท่ากับเท่าใดเสมอ?", "choices": [{"text": "1", "color": "red", "correct": false}, {"text": "-1", "color": "blue", "correct": false}, {"text": "0", "color": "yellow", "correct": true}, {"text": "ขึ้นกับค่าของ n", "color": "green", "correct": false}], "ans": "0", "math_proof": "ในจำนวนเต็ม 4 ตัวเรียงติดกัน จะต้องมีจำนวนหนึ่งหารด้วย 4 = 2² ลงตัวเสมอ จึงมีกำลังสองของจำนวนเฉพาะหารลงตัว ทำให้ค่า μ ของจำนวนนั้นเป็น 0 ส่งผลให้ผลคูณทั้งหมดเป็น 0", "trap": "นั่งแทนค่า n แล้วคิดว่าอาจจะมีช่วงที่ไม่เป็น 0", "script": "ใครไปนั่งคูณทีละตัวโดนหลอกแล้ว! เลขเรียงกัน 4 ตัว ต้องมีตัวนึงที่ 4 หารลงตัว และ 4 คือ 2² มีกำลังสองเมื่อไหร่ μ โดนปรับเป็น 0 ทันที คูณอะไรก็ได้ 0 ครับ!"}, {"id": "post_8", "num": 8, "type": "quiz", "time": "30s", "tag": "ทฤษฎีบท", "tag_color": "#2468B5", "q": "ผลคูณของตัวหารบวกทั้งหมดของ n มีค่าเท่ากับข้อใด?", "choices": [{"text": "n^(τ(n))", "color": "red", "correct": false}, {"text": "n^(τ(n)/2)", "color": "blue", "correct": true}, {"text": "σ(n)^(τ(n))", "color": "yellow", "correct": false}, {"text": "n(n+1)/2", "color": "green", "correct": false}], "ans": "n^(τ(n)/2)", "math_proof": "ให้ P = ∏_{d|n} d และ P = ∏_{d|n} (n/d) คูณสองสมการได้ P² = ∏_{d|n} (d · n/d) = ∏_{d|n} n = n^{τ(n)} ถอดรากได้ P = n^{τ(n)/2}", "trap": "ลืมหาร 2 ที่เลขชี้กำลัง แล้วไปกา n^{τ(n)}", "script": "จับคู่หัวท้าย d คูณกับ n/d ได้ n ทุกคู่ มีทั้งหมด τ(n) ตัว ก็จับได้ τ(n)/2 คู่ เพราะฉะนั้นผลคูณคือ n^{τ(n)/2} จำสูตรนี้ไว้ใช้ยาวๆ เลย!"}, {"id": "post_9", "num": 9, "type": "quiz", "time": "30s", "tag": "คิดเลขเร็ว", "tag_color": "#B07800", "q": "จงหาค่าของ φ(72)", "choices": [{"text": "18", "color": "red", "correct": false}, {"text": "24", "color": "blue", "correct": true}, {"text": "36", "color": "yellow", "correct": false}, {"text": "12", "color": "green", "correct": false}], "ans": "24", "math_proof": "72 = 2³ × 3² ใช้สูตร φ(72) = 72 × (1 - 1/2) × (1 - 1/3) = 72 × (1/2) × (2/3) = 24", "trap": "ลืมคูณ 72 ด้วยเศษส่วนทั้งสองตัว หรือคิดเลขผิด", "script": "วิธีคิดไวสุดๆ ไม่ต้องแยกคิดทีละตัว ใช้สูตรหักออก: 72 คูณครึ่งหนึ่งเหลือ 36 แล้วคูณ 2/3 ได้ 24 ตอบได้ใน 10 วินาที!"}, {"id": "post_10", "num": 10, "type": "quiz", "time": "45s", "tag": "คิดเลขเร็ว", "tag_color": "#B07800", "q": "จำนวนเต็มบวก n ที่น้อยที่สุด ที่ทำให้ τ(n) = 6 คือจำนวนใด?", "choices": [{"text": "12", "color": "red", "correct": true}, {"text": "18", "color": "blue", "correct": false}, {"text": "24", "color": "yellow", "correct": false}, {"text": "32", "color": "green", "correct": false}], "ans": "12", "math_proof": "6 แยกผลคูณได้เป็น 6 หรือ 3 × 2: กรณี p^5 ให้ 2^5 = 32; กรณี p²q¹ เอาชี้กำลังมากใส่ฐานน้อยได้ 2² × 3¹ = 12 เทียบแล้ว 12 < 32 ดังนั้นค่าน้อยที่สุดคือ 12", "trap": "เผลอไปจัดเป็น 2¹ × 3² = 18 ซึ่งมี τ(18) = 6 เหมือนกัน แต่ 18 > 12", "script": "โจทย์ย้อนกลับแบบนี้ ทริกคือ 'อยากได้ค่าน้อย ให้เอาเลขชี้กำลังเยอะไปยกกำลังจำนวนเฉพาะที่น้อยที่สุด' เอา 2 ไปยกกำลัง 2 แล้วคูณ 3 ได้ 12 ชนะ 18 และ 32 ขาดลอย!"}, {"id": "post_11", "num": 11, "type": "quiz", "time": "45s", "tag": "คิดเลขเร็ว", "tag_color": "#B07800", "q": "ผลรวมของตัวหารบวกทั้งหมดของ 60 หรือ σ(60) มีค่าเท่าใด?", "choices": [{"text": "120", "color": "red", "correct": false}, {"text": "144", "color": "blue", "correct": false}, {"text": "168", "color": "yellow", "correct": true}, {"text": "180", "color": "green", "correct": false}], "ans": "168", "math_proof": "60 = 2² × 3¹ × 5¹ ดังนั้น σ(60) = (1 + 2 + 4)(1 + 3)(1 + 5) = 7 × 4 × 6 = 168", "trap": "คูณเลขผิด หรือลืมบวก 1 ในวงเล็บ", "script": "แยกวงเล็บแล้วคูณกัน: วงเล็บแรกได้ 7, วงเล็บสองได้ 4, วงเล็บสามได้ 6 จับ 7 × 4 × 6 = 168 และสังเกตไหมว่า 168 > 2(60) แปลว่า 60 เป็นจำนวนมากเกิน (Abundant Number) ด้วยนะ!"}, {"id": "post_12", "num": 12, "type": "quiz", "time": "30s", "tag": "นิยาม", "tag_color": "#0A7567", "q": "ค่า μ(n) = 0 จะเกิดขึ้นเมื่อจำนวนเต็มบวก n มีสมบัติใด?", "choices": [{"text": "n เป็นจำนวนเฉพาะ", "color": "red", "correct": false}, {"text": "n เป็นจำนวนคี่", "color": "blue", "correct": false}, {"text": "มี p² หาร n ลงตัว (ไม่เป็น Square-free)", "color": "yellow", "correct": true}, {"text": "ไม่มีทางเกิดขึ้นได้", "color": "green", "correct": false}], "ans": "มี p² หาร n ลงตัว (ไม่เป็น Square-free)", "math_proof": "นิยามฟังก์ชันเมอบิอุส: μ(n) = 0 ก็ต่อเมื่อมีจำนวนเฉพาะ p ที่ทำให้ p² | n", "trap": "สับสนระหว่างค่า 0 กับ 1 หรือ -1", "script": "เมอบิอุสเกลียดเลขยกกำลังสอง! ถ้าจำนวนไหนมี p² ซ่อนอยู่ข้างใน เช่น โดน 4, 9, 25 หารลงตัว ค่า μ จะโดนกดเป็น 0 ทันที!"}, {"id": "post_13", "num": 13, "type": "quiz", "time": "60s", "tag": "สอวน.บอส", "tag_color": "#6B4FD8", "q": "ผลรวมของ φ(d) โดยที่ d วิ่งทั่วตัวหารบวกของ 100 มีค่าเท่าใด?", "choices": [{"text": "40", "color": "red", "correct": false}, {"text": "80", "color": "blue", "correct": false}, {"text": "100", "color": "yellow", "correct": true}, {"text": "217", "color": "green", "correct": false}], "ans": "100", "math_proof": "เอกลักษณ์ของเกาส์ (Gauss's Identity): ∑_{d|n} φ(d) = n สำหรับทุกจำนวนเต็มบวก n ดังนั้น ∑_{d|100} φ(d) = 100 ทันที", "trap": "นั่งหาตัวหารของ 100 ทั้ง 9 ตัว (1, 2, 4, 5, 10, 20, 25, 50, 100) แล้วคำนวณ φ ทีละตัว", "script": "ใครไปนั่งหาตัวหาร 9 ตัวแล้วคำนวณ φ ทีละตัว โดนทฤษฎีบทขโมยเวลาแล้ว! ทฤษฎีของเกาส์บอกว่า ผลรวมของ φ(d) ทุกตัวหาร จะบวกกลับมาได้ตัวมันเองเสมอ โจทย์ถาม 100 ก็ตอบ 100 ได้เลยใน 1 วินาที!"}, {"id": "post_14", "num": 14, "type": "quiz", "time": "60s", "tag": "สอวน.บอส", "tag_color": "#6B4FD8", "q": "ผลรวมของ μ(d) โดยที่ d วิ่งทั่วตัวหารบวกของ 2026 มีค่าเท่าใด?", "choices": [{"text": "2026", "color": "red", "correct": false}, {"text": "1", "color": "blue", "correct": false}, {"text": "0", "color": "yellow", "correct": true}, {"text": "-1", "color": "green", "correct": false}], "ans": "0", "math_proof": "ทฤษฎีบทพื้นฐานของเมอบิอุส: ∑_{d|n} μ(d) = 1 เมื่อ n = 1 และเท่ากับ 0 เมื่อ n > 1 เนื่องจาก 2026 > 1 ผลรวมจึงเป็น 0 เสมอ", "trap": "ตกใจกับตัวเลข 2026 แล้วพยายามแยกตัวประกอบคำนวณทีละพจน์", "script": "นี่ก็อีกข้อที่เด็กชอบตกใจตัวเลข 2026! ทฤษฎีบอกไว้ชัดเจน ถ้า n > 1 ผลรวมของ μ ทุกตัวหาร หักล้างกันหมดเกลี้ยงเหลือ 0 เสมอครับ!"}, {"id": "post_15", "num": 15, "type": "quiz", "time": "60s", "tag": "สอวน.บอส", "tag_color": "#6B4FD8", "q": "จำนวนในข้อใดต่อไปนี้ ไม่สามารถเป็นค่าของ φ(n) ได้เลย?", "choices": [{"text": "8", "color": "red", "correct": false}, {"text": "12", "color": "blue", "correct": false}, {"text": "14", "color": "yellow", "correct": true}, {"text": "16", "color": "green", "correct": false}], "ans": "14", "math_proof": "ถ้า φ(n) = 14 เนื่องจาก (p-1)|φ(n) จะได้ (p-1)|14 ⇒ p-1 ∈ {1, 2, 7, 14} ⇒ p ∈ {2, 3, 8, 15} ซึ่งเฉพาะมีแค่ 2 และ 3 ดังนั้น n = 2^a 3^b แต่ φ(2^a 3^b) = 2^{a-1} 3^{b-1} (2) ซึ่งมีตัวประกอบเฉพาะแค่ 2 และ 3 ไม่มี 7 (ขัดแย้งกับ 14 = 2 × 7)", "trap": "คิดว่าทุกจำนวนคู่สามารถเป็นค่าของ φ(n) ได้", "script": "ข้อนี้ระดับข้อสอบคัดเลือกค่าย สอวน.! ถ้า φ(n) = 14 จำนวนเฉพาะที่เป็นไปได้มีแค่ 2 กับ 3 ซึ่งคำนวณยังไงก็ไม่มีทางสร้างเลข 7 ขึ้นมาได้ ดังนั้น 14 จึงเป็นค่าที่เป็นไปไม่ได้ จำวิธีพิสูจน์ข้อนี้ไว้ให้ดี ข้อสอบชอบออกมาก!"}];
+
+let currentStage = 'pre'; // 'pre' | 'lab' | 'post' | 'analytics'
+let currentView = 'teacher'; // 'teacher' | 'student' | 'table'
+let searchQuery = '';
+
+let preAnswers = JSON.parse(localStorage.getItem('nt_pre_ans') || '{}');
+let postAnswers = JSON.parse(localStorage.getItem('nt_post_ans') || '{}');
+
+function getActiveQuestions() {
+  return currentStage === 'pre' ? PRE_DATA : POST_DATA;
+}
+
+function setStage(stage) {
+  currentStage = stage;
+  document.querySelectorAll('.stage-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.stage === stage);
+  });
+
+  const subNav = document.getElementById('subControls');
+  const qSec = document.getElementById('questionsSection');
+  const labSec = document.getElementById('labSection');
+  const anaSec = document.getElementById('analyticsSection');
+  const tblView = document.getElementById('tableView');
+
+  if (stage === 'pre' || stage === 'post') {
+    subNav.style.display = 'flex';
+    if (currentView === 'table') {
+      qSec.style.display = 'none';
+      tblView.style.display = 'block';
+    } else {
+      qSec.style.display = 'block';
+      tblView.style.display = 'none';
+    }
+    labSec.style.display = 'none';
+    anaSec.style.display = 'none';
+    renderQuestions();
+  } else if (stage === 'lab') {
+    subNav.style.display = 'none';
+    qSec.style.display = 'none';
+    tblView.style.display = 'none';
+    labSec.style.display = 'block';
+    anaSec.style.display = 'none';
+    updateLab();
+  } else if (stage === 'analytics') {
+    subNav.style.display = 'none';
+    qSec.style.display = 'none';
+    tblView.style.display = 'none';
+    labSec.style.display = 'none';
+    anaSec.style.display = 'block';
+    renderAnalytics();
+  }
+}
+
+function setViewMode(view) {
+  currentView = view;
+  document.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === view);
+  });
+
+  const qSec = document.getElementById('questionsSection');
+  const tblView = document.getElementById('tableView');
+
+  if (view === 'table') {
+    qSec.style.display = 'none';
+    tblView.style.display = 'block';
+    renderTable();
+  } else {
+    qSec.style.display = 'block';
+    tblView.style.display = 'none';
+    renderQuestions();
+  }
+}
+
+function handleSearch() {
+  searchQuery = document.getElementById('filterInput').value.trim().toLowerCase();
+  if (currentView === 'table') {
+    renderTable();
+  } else {
+    renderQuestions();
+  }
+}
+
+function copyScript(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const old = btn.innerText;
+    btn.innerText = '✓ คัดลอกแล้ว!';
+    btn.style.background = 'var(--primary)';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.innerText = old;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  });
+}
+
+function onAnswerSelect(qId, choiceIdx, isCorrect) {
+  const store = currentStage === 'pre' ? preAnswers : postAnswers;
+  if (store[qId] !== undefined) return;
+  store[qId] = { choiceIdx, isCorrect };
+  
+  if (currentStage === 'pre') {
+    localStorage.setItem('nt_pre_ans', JSON.stringify(preAnswers));
+  } else {
+    localStorage.setItem('nt_post_ans', JSON.stringify(postAnswers));
+  }
+
+  renderQuestions();
+}
+
+function renderQuestions() {
+  const questions = getActiveQuestions();
+  const store = currentStage === 'pre' ? preAnswers : postAnswers;
+  const isStudent = currentView === 'student';
+  const container = document.getElementById('cardsList');
+
+  const filtered = questions.filter(item => {
+    if (!searchQuery) return true;
+    return item.q.toLowerCase().includes(searchQuery) ||
+           item.ans.toLowerCase().includes(searchQuery) ||
+           item.math_proof.toLowerCase().includes(searchQuery) ||
+           item.trap.toLowerCase().includes(searchQuery) ||
+           item.script.toLowerCase().includes(searchQuery);
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="background:var(--surface); border:1.5px dashed var(--line); border-radius:var(--radius-lg); padding:40px; text-align:center; color:var(--ink-secondary);">
+        <h3>🔍 ไม่พบข้อคำถามที่ตรงกับคำค้นหา</h3>
+      </div>
+    `;
+    return;
+  }
+
+  const shapes = { red: '▲', blue: '◆', yellow: '●', green: '■' };
+
+  container.innerHTML = filtered.map(item => {
+    const answered = store[item.id];
+
+    const choicesHtml = item.choices.map((c, idx) => {
+      if (!isStudent) {
+        return `
+          <div class="c-item ${c.color} ${c.correct ? 'is-correct' : ''}">
+            <span style="width:20px;">${shapes[c.color]}</span>
+            <span>${c.text}</span>
+            ${c.correct ? '<span class="c-indicator">✓ ถูกต้อง</span>' : ''}
+          </div>
+        `;
+      } else {
+        let extra = '';
+        if (answered) {
+          if (c.correct) extra = 'is-correct';
+          else if (answered.choiceIdx === idx) extra = 'wrong-choice';
+        }
+        return `
+          <button class="c-item student-choice-btn ${c.color} ${extra}"
+                  onclick="onAnswerSelect('${item.id}', ${idx}, ${c.correct})"
+                  ${answered ? 'disabled' : ''}>
+            <span style="width:20px;">${shapes[c.color]}</span>
+            <span>${c.text}</span>
+            ${answered && c.correct ? '<span class="c-indicator">✓ คำตอบที่ถูก</span>' : ''}
+          </button>
+        `;
+      }
+    }).join('');
+
+    let detailsHtml = '';
+    if (!isStudent || answered) {
+      detailsHtml = `
+        <div class="box-duo">
+          <div class="box-info proof">
+            <h4>🧠 เหตุผลทางคณิตศาสตร์ & บทพิสูจน์</h4>
+            <div>${item.math_proof}</div>
+          </div>
+          <div class="box-info trap">
+            <h4>⚠️ จุดดักมหาชน & ข้อควรระวัง</h4>
+            <div>${item.trap}</div>
+          </div>
+        </div>
+        <div class="script-box">
+          <div class="script-bar">
+            <h4>🎙️ สคริปต์คำพูดครูใส่ไมค์ (แก้ความง่วง)</h4>
+            <button class="btn-copy" onclick="copyScript('${item.script.replace(/'/g, "\\'") }', this)">📋 คัดลอกบทพูด</button>
+          </div>
+          <p class="script-quote">“${item.script}”</p>
+        </div>
+      `;
+    } else {
+      detailsHtml = `
+        <div style="background:var(--surface-subtle); border-radius:var(--radius-md); padding:14px; text-align:center; color:var(--ink-secondary); font-size:0.92rem;">
+          👆 แตะเลือกคำตอบด้านบนเพื่อตรวจและเปิดเฉลยละเอียดทันที
+        </div>
+      `;
+    }
+
+    return `
+      <div class="q-card">
+        <div class="q-card-head">
+          <div class="q-badge-cluster">
+            <div class="q-index">${item.num}</div>
+            <span class="badge-pill" style="border-color:${item.tag_color}; color:${item.tag_color};">#${item.tag}</span>
+            <span class="badge-pill time">⏱️ ${item.time}</span>
+          </div>
+          <span style="font-size:0.85rem; font-weight:700; color:var(--ink-secondary);">
+            ${currentStage === 'pre' ? '📘 ก่อนเรียน (Pre-test)' : '📙 หลังเรียน (Post-test)'}
+          </span>
+        </div>
+        <h3 class="q-title">${item.q}</h3>
+        <div class="choices-row">${choicesHtml}</div>
+        ${detailsHtml}
+      </div>
+    `;
+  }).join('');
+}
+
+function renderTable() {
+  const questions = getActiveQuestions();
+  const tbody = document.getElementById('tableBody');
+
+  const filtered = questions.filter(item => {
+    if (!searchQuery) return true;
+    return item.q.toLowerCase().includes(searchQuery) ||
+           item.ans.toLowerCase().includes(searchQuery) ||
+           item.math_proof.toLowerCase().includes(searchQuery) ||
+           item.trap.toLowerCase().includes(searchQuery);
+  });
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px;">ไม่พบข้อมูล</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(item => `
+    <tr>
+      <td style="text-align:center; font-weight:700;">${item.num}</td>
+      <td>
+        <span class="badge-pill" style="border-color:${item.tag_color}; color:${item.tag_color};">#${item.tag}</span><br>
+        <small style="color:var(--ink-secondary); font-weight:600;">⏱️ ${item.time}</small>
+      </td>
+      <td><b>${item.q}</b></td>
+      <td><span class="pill-ans">${item.ans}</span></td>
+      <td style="font-size:0.9rem;">${item.math_proof}</td>
+      <td style="font-size:0.9rem; color:var(--accent-red);">${item.trap}</td>
+    </tr>
+  `).join('');
+}
+
+/* MATH LAB ENGINE */
+function factorize(n) {
+  const factors = [];
+  let d = 2;
+  while (d * d <= n) {
+    if (n % d === 0) {
+      let count = 0;
+      while (n % d === 0) {
+        n /= d;
+        count++;
+      }
+      factors.push([d, count]);
+    }
+    d++;
+  }
+  if (n > 1) factors.push([n, 1]);
+  return factors;
+}
+
+function getDivisors(n) {
+  const divs = [];
+  for (let i = 1; i * i <= n; i++) {
+    if (n % i === 0) {
+      divs.push(i);
+      if (i * i !== n) divs.push(n / i);
+    }
+  }
+  return divs.sort((a, b) => a - b);
+}
+
+function calcPhi(n, factors) {
+  if (n === 1) return 1;
+  let res = n;
+  for (const [p] of factors) {
+    res = (res / p) * (p - 1);
+  }
+  return res;
+}
+
+function calcTau(factors) {
+  return factors.reduce((acc, [, a]) => acc * (a + 1), 1);
+}
+
+function calcSigma(factors) {
+  return factors.reduce((acc, [p, a]) => acc * ((Math.pow(p, a + 1) - 1) / (p - 1)), 1);
+}
+
+function calcMu(factors) {
+  if (factors.some(([, a]) => a > 1)) return 0;
+  return factors.length % 2 === 0 ? 1 : -1;
+}
+
+function setLabN(v) {
+  document.getElementById('calcInput').value = v;
+  updateLab();
+}
+
+function updateLab() {
+  const input = document.getElementById('calcInput');
+  let n = parseInt(input.value);
+  if (isNaN(n) || n < 1) n = 1;
+  if (n > 99999) n = 99999;
+
+  const factors = factorize(n);
+  const divs = getDivisors(n);
+
+  let canonicalStr = '';
+  if (n === 1) {
+    canonicalStr = '1 (ไม่มีตัวประกอบเฉพาะ)';
+  } else {
+    canonicalStr = factors.map(([p, a]) => a === 1 ? `${p}` : `${p}<sup>${a}</sup>`).join(' × ');
+  }
+  document.getElementById('canonicalDisplay').innerHTML = `${n} = ${canonicalStr}`;
+
+  const phi = calcPhi(n, factors);
+  const tau = calcTau(factors);
+  const sigma = calcSigma(factors);
+  const mu = calcMu(factors);
+
+  document.getElementById('valPhi').innerText = phi;
+  document.getElementById('valTau').innerText = tau;
+  document.getElementById('valSigma').innerText = sigma;
+  document.getElementById('valMu').innerText = mu;
+
+  document.getElementById('divCount').innerText = divs.length;
+  document.getElementById('divList').innerHTML = divs.map(d => `
+    <span class="badge-pill" style="font-size:0.9rem; background:var(--surface); border:1px solid var(--line);">${d}</span>
+  `).join('');
+}
+
+/* ANALYTICS */
+function renderAnalytics() {
+  const preCorrect = Object.values(preAnswers).filter(a => a.isCorrect).length;
+  const preDone = Object.keys(preAnswers).length;
+  const postCorrect = Object.values(postAnswers).filter(a => a.isCorrect).length;
+  const postDone = Object.keys(postAnswers).length;
+
+  document.getElementById('metricPreScore').innerText = `${preCorrect} / 14`;
+  document.getElementById('metricPrePct').innerText = preDone > 0 ? `ทำเสร็จแล้ว ${preDone} ข้อ (${Math.round((preCorrect/14)*100)}%)` : 'ยังไม่ได้เริ่มทำ';
+
+  document.getElementById('metricPostScore').innerText = `${postCorrect} / 15`;
+  document.getElementById('metricPostPct').innerText = postDone > 0 ? `ทำเสร็จแล้ว ${postDone} ข้อ (${Math.round((postCorrect/15)*100)}%)` : 'ยังไม่ได้เริ่มทำ';
+
+  const preRate = preDone > 0 ? (preCorrect / 14) * 100 : 0;
+  const postRate = postDone > 0 ? (postCorrect / 15) * 100 : 0;
+  const delta = Math.round(postRate - preRate);
+
+  const deltaEl = document.getElementById('metricDelta');
+  deltaEl.innerText = `${delta >= 0 ? '+' : ''}${delta}%`;
+  deltaEl.style.color = delta >= 0 ? 'var(--primary)' : 'var(--accent-red)';
+
+  let diag = '';
+  if (preDone === 0 && postDone === 0) {
+    diag = 'ยังไม่พบข้อมูลการทำแบบทดสอบ แนะนำให้เริ่มทำแบบทดสอบในแท็บ <b>"1. ก่อนเรียน"</b> เพื่อเช็กจุดดักพื้นฐานก่อน จากนั้นเข้าสู่ห้องทดลอง และทดสอบในแท็บ <b>"3. หลังเรียน"</b> ครับ';
+  } else {
+    diag = `คุณทำแบบทดสอบก่อนเรียนได้ <b>${preCorrect} จาก 14 ข้อ</b> และทำแบบทดสอบหลังเรียนได้ <b>${postCorrect} จาก 15 ข้อ</b> `;
+    if (delta > 0) {
+      diag += `🎉 ยอดเยี่ยมมาก! คุณมีพัฒนาการเพิ่มขึ้น <b>${delta}%</b> แสดงว่าเข้าใจมโนทัศน์ของฟังก์ชันเลขคณิตและการแก้จุดดักในข้อสอบ สอวน. ได้ดียิ่งขึ้น`;
+    } else if (postDone > 0) {
+      diag += `💡 แนะนำให้ทบทวนข้อที่เป็นระดับ "สอวน.บอส" เช่น เอกลักษณ์ของเกาส์ (∑ φ(d) = n) และการหาค่าที่เป็นไปไม่ได้ของ φ(n) เพื่อเพิ่มความแม่นยำยิ่งขึ้น`;
+    }
+  }
+  document.getElementById('analyticsDiagnosis').innerHTML = diag;
+}
+
+function clearAllScores() {
+  if (confirm('คุณต้องการล้างประวัติการตอบคำถามทั้งก่อนเรียนและหลังเรียนหรือไม่?')) {
+    preAnswers = {};
+    postAnswers = {};
+    localStorage.removeItem('nt_pre_ans');
+    localStorage.removeItem('nt_post_ans');
+    renderAnalytics();
+  }
+}
+
+/* THEME */
+const themeBtn = document.getElementById('themeToggleBtn');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+let appTheme = localStorage.getItem('nt_hub_theme') || (prefersDark ? 'dark' : 'light');
+
+function setAppTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('themeText').innerText = t === 'dark' ? 'โหมดมืด' : 'โหมดสว่าง';
+  localStorage.setItem('nt_hub_theme', t);
+}
+
+themeBtn.addEventListener('click', () => {
+  appTheme = appTheme === 'dark' ? 'light' : 'dark';
+  setAppTheme(appTheme);
+});
+
+setAppTheme(appTheme);
+setStage('pre');
+</script>
+</body>
+</html>
